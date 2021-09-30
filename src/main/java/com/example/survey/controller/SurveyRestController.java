@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Контроллер основных CRUD операций над опросниками
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/admin")
@@ -36,7 +39,7 @@ public class SurveyRestController {
     }
 
     @PatchMapping("/survey/{id}/edit")
-    public ResponseEntity<Survey> update (@PathVariable("id") int id, @RequestBody Survey _survey ) {
+    public ResponseEntity<Survey> updateSurvey(@PathVariable("id") int id, @RequestBody Survey _survey ) {
         Survey survey = surveyService.getSurveyById(id);
 
         survey.setName(_survey.getName());
@@ -48,7 +51,7 @@ public class SurveyRestController {
     }
 
     @DeleteMapping("/survey/{id}")
-    public ResponseEntity delete ( @PathVariable("id") int id){
+    public ResponseEntity deleteSurvey( @PathVariable("id") int id){
         surveyService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }

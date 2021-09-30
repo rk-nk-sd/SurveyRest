@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Контроллер основных CRUD операций над Вопросами
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/admin")
@@ -23,7 +26,7 @@ public class QuestionRestController {
     }
 
     @PostMapping("/question/create")
-    public ResponseEntity<?> createUser (@RequestBody Question _question) {
+    public ResponseEntity<?> createQuestion (@RequestBody Question _question) {
         Question question = new Question();
 
         question.setQuestionText(_question.getQuestionText());
