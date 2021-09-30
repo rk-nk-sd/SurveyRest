@@ -17,22 +17,34 @@ public class SurveyRestController {
     @Autowired
     private final SurveyService surveyService;
 
-    @GetMapping("/survey/getAllSurvey")
-    public ResponseEntity<List<Survey>> getAllUsers() {
+    @GetMapping("/survey/all")
+    public ResponseEntity<List<Survey>> getAllSurvey() {
         return ResponseEntity.ok(surveyService.findAllSurvey());
     }
 
-    @PostMapping("/survey/create/survey")
-    public ResponseEntity<?> createUser (@RequestBody Survey _survey) {
+    @PostMapping("/survey/create")
+    public ResponseEntity<?> createSurvey(@RequestBody Survey _survey) {
         Survey survey = new Survey();
 
         survey.setName(_survey.getName());
-//        survey.setDataStart(_survey.getDataStart());
-//        survey.setDataFinish(_survey.getDataFinish());
-//        survey.setDescription(_survey.getDescription());
+        survey.setDateStart(_survey.getDateStart());
+        survey.setDateFinish(_survey.getDateFinish());
+        survey.setDescription(_survey.getDescription());
 
         surveyService.addSurvey(survey);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/survey/{id}/edit")
+    public ResponseEntity<Survey> update (@PathVariable("id") int id, @RequestBody Survey _survey ) {
+        Survey survey = surveyService.getSurveyById(id);
+
+        survey.setName(_survey.getName());
+        survey.setDateStart(_survey.getDateStart());
+        survey.setDateFinish(_survey.getDateFinish());
+        survey.setDescription(_survey.getDescription());
+
+        return ResponseEntity.ok(surveyService.update(survey));
     }
 
     @DeleteMapping("/survey/{id}")

@@ -21,6 +21,16 @@ public class SurveyServiceImpl implements SurveyService {
     public Survey addSurvey(Survey survey) { return surveyRepository.save(survey); }
 
     @Override
+    public Survey getSurveyById(int id) {
+        return surveyRepository.getById(id);
+    }
+
+    @Override
+    public Survey update(Survey survey) {
+        return surveyRepository.saveAndFlush(survey);
+    }
+
+    @Override
     public void delete(int id) {
         surveyRepository.deleteById(id);
     }
