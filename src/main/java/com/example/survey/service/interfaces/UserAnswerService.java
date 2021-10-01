@@ -1,12 +1,11 @@
 package com.example.survey.service.interfaces;
 
 import com.example.survey.entity.UserAnswer;
-import com.example.survey.repository.UserAnswerRepository;
 
 import java.util.List;
 
 public interface UserAnswerService {
-    List<UserAnswerRepository> findAllUserAnswer();
+    List<UserAnswer> findAllUserAnswer();
 
     UserAnswer addUserAnswer(UserAnswer userAnswer);
 

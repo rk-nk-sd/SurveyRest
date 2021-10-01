@@ -13,27 +13,27 @@ import java.util.List;
 public class UserAnswerServiceImpl implements UserAnswerService {
     private final UserAnswerRepository userAnswerRepository;
     @Override
-    public List<UserAnswerRepository> findAllUserAnswer() {
+    public List<UserAnswer> findAllUserAnswer() {
         return userAnswerRepository.findAll();
     }
 
     @Override
     public UserAnswer addUserAnswer(UserAnswer userAnswer) {
-        return null;
+        return userAnswerRepository.save(userAnswer);
     }
 
     @Override
     public UserAnswer getUserAnswerById(int id) {
-        return null;
+        return userAnswerRepository.getById(id);
     }
 
     @Override
     public UserAnswer updateUserAnswer(UserAnswer userAnswer) {
-        return null;
+        return userAnswerRepository.saveAndFlush(userAnswer);
     }
 
     @Override
     public void deleteUserAnswer(int id) {
-
+        userAnswerRepository.deleteById(id);
     }
 }
