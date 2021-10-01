@@ -29,5 +29,5 @@ public class Survey {
 
     @Column
     private String description;
-    
+
 }

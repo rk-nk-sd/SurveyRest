@@ -1,6 +1,7 @@
 package com.example.survey.entity;
 
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Data
 @Getter
 @Setter
-public class Role /*implements GrantedAuthority*/ {
+public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,8 +23,8 @@ public class Role /*implements GrantedAuthority*/ {
         this.roleName = roleName;
     }
 
-//    @Override
-//    public String getAuthority() {
-//        return roleName;
-//    }
+    @Override
+    public String getAuthority() {
+        return roleName;
+    }
 }
