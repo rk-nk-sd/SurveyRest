@@ -3,6 +3,7 @@ package com.example.survey.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -22,6 +23,9 @@ public class Question {
     @Column
     private String questionType;
 
-    @ManyToOne
-    private Survey survey;
+    @ManyToMany
+    @JoinTable (name="question_survey",
+            joinColumns=@JoinColumn (name="question_id"),
+            inverseJoinColumns=@JoinColumn(name="survey_id"))
+    private Set<Survey> survey;
 }

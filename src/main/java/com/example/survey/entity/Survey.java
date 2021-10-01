@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -28,4 +29,10 @@ public class Survey {
 
     @Column
     private String description;
+
+    @ManyToMany
+    @JoinTable(name="question_survey",
+            joinColumns=@JoinColumn(name="survey_id"),
+            inverseJoinColumns=@JoinColumn(name="question_id"))
+    private Set<Question> questions;
 }
