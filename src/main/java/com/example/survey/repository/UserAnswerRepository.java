@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface UserAnswerRepository extends JpaRepository<UserAnswer, Integer> {
 
-    @Query()
-    List<UserAnswer> findAll();
+//    @Query()
+//    List<UserAnswer> findAll();
 }
